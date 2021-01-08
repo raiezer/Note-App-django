@@ -1,0 +1,84 @@
+{% extends 'notes/base.html' %}
+{% block content %}
+<style>
+    .head{
+    margin-top:20px;}
+
+    .btn-add{
+        width:6%;
+        background-color:#f9f9f9;
+
+        color:black;}
+
+    .input-field{
+            width:50%;
+            padding:10px;
+            border-radius:4px;
+            margin-right:12px;}
+
+    .center{
+         margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+</style>
+<div class="container">
+    <div class="row head justify-content-center">
+
+        <div class="col-sm-4 " style="background-color:yellow;padding:0;margin-top: auto;margin-bottom: auto;">
+            <div class="col-sm-12" style="background-color:pink;height:1px;"></div>
+        </div>
+
+        <div class="col-sm-2" style="background-color:yellow;text-align:center;border:1px solid ;">
+            <h2>To-Do</h2>
+        </div>
+
+        <div class="col-sm-4" style="margin-top: auto;margin-bottom: auto;padding:0;">
+            <div class="col-sm-12" style="background-color:pink;height:1px;"></div>
+        </div>
+  </div>
+    <form action="" method="post">
+        <div class="row justify-content-center" style="margin-top:20px; text-align:center;">
+
+            {% csrf_token %}
+            <input class="input-field" type="text" placeholder="Task for Today" name="notes">
+            <button class="btn btn-add  " type="submit" >+</button>
+
+        </div>
+     </form>
+
+
+    {% if message %}
+    <div class="row head justify-content-center" style="margin-top:60px;">
+        <div class="col-sm-10 " style="text-align:center;height:200px;border: 1px solid pink;">
+            <div class="col-sm-12 center" style="margin-top: auto;margin-bottom: auto;">{{message}}</div></div>
+
+    </div>
+
+    {% else %}
+
+    <div class="row justify-content-center">
+        {% for i in all_notes %}
+            <div class="card " style="margin-top:50px;width:400px;margin-right:20px;float:left;text-align:center;">
+                <div class="card-header " style="background-color:pink">
+                    <p class="" style="display:inline-block;">{{i.date_time}}</p>
+                <a href="/notes/delete_notes/{{i.id}}"><button  class="btn" type="button" style="float:right; font-size:18px;border:1px solid;margin-left:5px;"><i class="fa fa-trash"></i></button></a>
+                <a href="/notes/edit_notes/{{i.id}}"><button  class="btn" type="button" style="float:right;font-size:18px;border:1px solid;"><i class="fa fa-edit"></i></button></a>
+
+                </div>
+
+                <div class="card-body ">message:{{i.notes}}<br><br>
+                </div>
+
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

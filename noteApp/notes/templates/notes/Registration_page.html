@@ -1,0 +1,90 @@
+
+
+{% extends 'notes/base.html' %}
+
+{% load static %}
+
+
+
+
+
+    {% block content %}
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color:#17a2b8;
+            }
+        * {
+            box-sizing: border-box;
+        }
+        .input-container {
+              margin-bottom:20px;
+              width: 100%;
+              display: -ms-flexbox; /* IE10 */
+                display: flex;
+
+            }
+        .icon {
+              padding: 10px;
+              background: dodgerblue;
+              color: white;
+              min-width: 50px;
+              text-align: center;
+            }
+        .input-field{
+            width:50%;
+            padding:10px;
+
+        }
+        img{
+
+            border-radius: 200px;
+            box-sizing: border-box;
+            background-color: #DDD;
+            border: 2px solid #cfd8dc;
+
+            }
+
+        .btn{
+             background-color: dodgerblue;
+             color: white;
+              padding: 10px 20px;
+              border: none;
+              cursor: pointer;}
+
+    </style>
+
+
+    <div class="row justify-content-center">
+         <div class="col-md-5"style="height:400px;margin-top:100px;">
+                <div class="card bg-light text-dark card-block justify-content-center" >
+                    <div class="card-body" style="text-align:center;">
+                        <div class="image_div" style="margin-bottom:20px;">
+                        <img src="{% static 'my_profile.jpg' %}" class="img-fluid rounded-circle" width="160" height="160">
+                        </div>
+                        <hr>
+                        <form action="" method="post" class="was-validated">
+                            {% csrf_token %}
+                            <div class="input-container justify-content-center">
+                                <i class="fa fa-user icon"></i>
+                                <input class="input-field" type="text" placeholder="Username" name="username">
+                            </div>
+
+                            <div class="input-container justify-content-center">
+                                <i class="fa fa-envelope icon"> </i>
+                                <input class="input-field" type="email" placeholder="Email" name="email">
+                            </div>
+
+                            <div class="input-container justify-content-center">
+                                <i class="fa fa-key icon"></i>
+                                <input class="input-field" type="password" placeholder="Password" name="psw">
+                            </div>
+
+                            <button type="submit" class="btn">Register</button>
+
+                        </form>
+                    </div>
+                </div>
+         </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <title>Title</title>
+</head>
+<body>
+
+    <style>
+        .ml-auto  {
+          left: auto !important;
+          right: 0px;
+}
+
+
+
+    </style>
+    <div class="container" style="height:55px;">
+        <nav class="navbar navbar-expand-sm fixed-top  bg-light">
+
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" style="">
+
+                    <div class="button" style="text-align:center;display:inline-block; ">
+                        {% if page == "register" %}
+                         <a href="/notes/login-page/"><button class="btn btn-success" type="button" >Login</button></a>
+                        {% endif %}
+                        {% if page == "login" %}
+                        <a href="/notes/register-page/"><button class="btn btn-success" type="button">Register</button></a>
+                        {% endif %}
+                        {% if page == "home" %}
+                        <a href="/notes/logout/"> <button class="btn btn-success" type="button">Logout</button> </a>
+                        {% endif %}
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div>
+    {% block content %}
+    {% endblock %}</div>
+</body>
+</html>
