@@ -35,12 +35,13 @@ def login(request):
             return redirect("/notes/to-do/")
         else:
             print("incorrect username or password")
-            return render(request, "notes/login_page.html", {'page': 'login','msg':'invalid'})
+            return render(request, "notes/login_page.html", {'page': 'login','msg':'invalid username or password'})
     return render(request, "notes/login_page.html", {'page': 'login'})
 
 @check_session
 def to_do(request):
     if request.method=='POST':
+
         notes=request.POST["notes"]
         date=datetime.datetime.now()
         user=User_model.objects.get(username=request.session["username"])

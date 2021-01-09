@@ -5,8 +5,7 @@
     margin-top:20px;}
 
     .btn-add{
-        width:6%;
-        background-color:#f9f9f9;
+               background-color:#f9f9f9;
 
         color:black;}
 
@@ -44,7 +43,7 @@
         <div class="row justify-content-center" style="margin-top:20px; text-align:center;">
 
             {% csrf_token %}
-            <input class="input-field" type="text" placeholder="Task for Today" name="notes">
+            <input class="input-field" type="text" placeholder="Task for Today" name="notes" required>
             <button class="btn btn-add  " type="submit" >+</button>
 
         </div>
@@ -62,7 +61,7 @@
 
     <div class="row justify-content-center">
         {% for i in all_notes %}
-            <div class="card " style="margin-top:50px;width:400px;margin-right:20px;float:left;text-align:center;">
+            <div class="card " style="margin-top:50px;margin-right:20px;float:left;text-align:center;">
                 <div class="card-header " style="background-color:pink">
                     <p class="" style="display:inline-block;">{{i.date_time}}</p>
                 <a href="/notes/delete_notes/{{i.id}}"><button  class="btn" type="button" style="float:right; font-size:18px;border:1px solid;margin-left:5px;"><i class="fa fa-trash"></i></button></a>
